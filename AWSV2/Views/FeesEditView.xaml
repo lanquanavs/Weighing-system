@@ -1,0 +1,330 @@
+﻿<Controls:MetroWindow
+    x:Class="AWSV2.Views.FeesEditView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+    xmlns:s="https://github.com/canton7/Stylet"
+    Title="费用编辑"
+    Width="480.276"
+    Height="283.06"
+    ResizeMode="NoResize"
+    ShowCloseButton="False"
+    ShowInTaskbar="False"
+    SizeToContent="WidthAndHeight">
+
+    <Controls:MetroWindow.IconTemplate>
+        <DataTemplate>
+            <iconPacks:PackIconFontAwesome
+                Width="{TemplateBinding Width}"
+                Height="{TemplateBinding Height}"
+                Margin="2"
+                Padding="4"
+                Foreground="{DynamicResource IdealForegroundColorBrush}"
+                Kind="ExclamationTriangleSolid" />
+        </DataTemplate>
+    </Controls:MetroWindow.IconTemplate>
+
+    <StackPanel Margin="5,5,5,5">
+        <Grid Width="425">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="7*" />
+                <ColumnDefinition Width="3*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <TextBlock
+                Grid.Row="0"
+                Grid.Column="0"
+                Margin="0,5"
+                HorizontalAlignment="Center"
+                FontWeight="Bold"><Run Language="zh-cn" Text="重量" /></TextBlock>
+            <TextBlock
+                Grid.Row="0"
+                Grid.Column="1"
+                Margin="0,5"
+                HorizontalAlignment="Center"
+                FontWeight="Bold">
+                费用(元)
+            </TextBlock>
+            <StackPanel
+                Grid.Row="1"
+                Grid.Column="0"
+                Orientation="Horizontal">
+                <TextBox
+                    Width="100"
+                    Margin="35,5,15,5"
+                    IsEnabled="{Binding ElementName=chbPayEnable, Path=IsChecked}"
+                    Text="{Binding Tonnage1Min}"
+                    TextAlignment="Right" />
+                <TextBox
+                    Width="100"
+                    Margin="25,5"
+                    IsEnabled="{Binding ElementName=chbPayEnable, Path=IsChecked}"
+                    Text="{Binding Tonnage1Max}"
+                    TextAlignment="Right" />
+            </StackPanel>
+            <TextBox
+                Grid.Row="1"
+                Grid.Column="1"
+                Width="100"
+                Margin="0,5"
+                IsEnabled="{Binding ElementName=chbPayEnable, Path=IsChecked}"
+                Text="{Binding Fees1}"
+                TextAlignment="Right" />
+
+            <StackPanel
+                Grid.Row="2"
+                Grid.Column="0"
+                Orientation="Horizontal">
+                <TextBox
+                    Width="100"
+                    Margin="35,5,15,5"
+                    IsEnabled="{Binding ElementName=chbPayEnable, Path=IsChecked}"
+                    Text="{Binding Tonnage2Min}"
+                    TextAlignment="Right" />
+                <TextBox
+                    Width="100"
+                    Margin="25,5"
+                    IsEnabled="{Binding ElementName=chbPayEnable, Path=IsChecked}"
+                    Text="{Binding Tonnage2Max}"
+                    TextAlignment="Right" />
+            </StackPanel>
+            <TextBox
+                Grid.Row="2"
+                Grid.Column="1"
+                Width="100"
+                Margin="0,5"
+                IsEnabled="{Binding ElementName=chbPayEnable, Path=IsChecked}"
+                Text="{Binding Fees2}"
+                TextAlignment="Right" />
+
+            <StackPanel
+                Grid.Row="3"
+                Grid.Column="0"
+                Orientation="Horizontal">
+                <TextBox
+                    Width="100"
+                    Margin="35,5,15,5"
+                    IsEnabled="{Binding ElementName=chbPayEnable, Path=IsChecked}"
+                    Text="{Binding Tonnage3Min}"
+                    TextAlignment="Right" />
+                <TextBox
+                    Width="100"
+                    Margin="25,5"
+                    IsEnabled="{Binding ElementName=chbPayEnable, Path=IsChecked}"
+                    Text="{Binding Tonnage3Max}"
+                    TextAlignment="Right" />
+            </StackPanel>
+            <TextBox
+                Grid.Row="3"
+                Grid.Column="1"
+                Width="100"
+                Margin="0,5"
+                IsEnabled="{Binding ElementName=chbPayEnable, Path=IsChecked}"
+                Text="{Binding Fees3}"
+                TextAlignment="Right" />
+
+            <StackPanel
+                Grid.Row="4"
+                Grid.Column="0"
+                Orientation="Horizontal">
+                <TextBox
+                    Width="100"
+                    Margin="35,5,15,5"
+                    IsEnabled="{Binding ElementName=chbPayEnable, Path=IsChecked}"
+                    Text="{Binding Tonnage4Min}"
+                    TextAlignment="Right" />
+                <TextBox
+                    Width="100"
+                    Margin="25,5"
+                    IsEnabled="{Binding ElementName=chbPayEnable, Path=IsChecked}"
+                    Text="{Binding Tonnage4Max}"
+                    TextAlignment="Right" />
+            </StackPanel>
+            <TextBox
+                Grid.Row="4"
+                Grid.Column="1"
+                Width="100"
+                Margin="0,5"
+                IsEnabled="{Binding ElementName=chbPayEnable, Path=IsChecked}"
+                Text="{Binding Fees4}"
+                TextAlignment="Right" />
+
+            <StackPanel
+                Grid.Row="5"
+                Grid.Column="0"
+                Orientation="Horizontal"
+                Visibility="Collapsed">
+                <TextBox
+                    Width="100"
+                    Margin="35,5,15,5"
+                    IsEnabled="{Binding ElementName=chbPayEnable, Path=IsChecked}"
+                    Text="{Binding Tonnage5Min}"
+                    TextAlignment="Right" />
+                <TextBox
+                    Width="100"
+                    Margin="25,5"
+                    IsEnabled="{Binding ElementName=chbPayEnable, Path=IsChecked}"
+                    Text="{Binding Tonnage5Max}"
+                    TextAlignment="Right" />
+            </StackPanel>
+            <TextBox
+                Grid.Row="5"
+                Grid.Column="1"
+                Width="100"
+                Margin="0,5"
+                IsEnabled="{Binding ElementName=chbPayEnable, Path=IsChecked}"
+                Text="{Binding Fees5}"
+                TextAlignment="Right"
+                Visibility="Collapsed" />
+
+            <StackPanel
+                Grid.Row="6"
+                Grid.Column="0"
+                Orientation="Horizontal"
+                Visibility="Collapsed">
+                <TextBox
+                    Width="100"
+                    Margin="35,5,15,5"
+                    IsEnabled="{Binding ElementName=chbPayEnable, Path=IsChecked}"
+                    Text="{Binding Tonnage6Min}"
+                    TextAlignment="Right" />
+                <TextBox
+                    Width="100"
+                    Margin="25,5"
+                    IsEnabled="{Binding ElementName=chbPayEnable, Path=IsChecked}"
+                    Text="{Binding Tonnage6Max}"
+                    TextAlignment="Right" />
+            </StackPanel>
+            <TextBox
+                Grid.Row="6"
+                Grid.Column="1"
+                Width="100"
+                Margin="0,5"
+                IsEnabled="{Binding ElementName=chbPayEnable, Path=IsChecked}"
+                Text="{Binding Fees6}"
+                TextAlignment="Right"
+                Visibility="Collapsed" />
+
+            <StackPanel
+                Grid.Row="7"
+                Grid.Column="0"
+                Orientation="Horizontal"
+                Visibility="Collapsed">
+                <TextBox
+                    Width="100"
+                    Margin="35,5,15,5"
+                    IsEnabled="{Binding ElementName=chbPayEnable, Path=IsChecked}"
+                    Text="{Binding Tonnage7Min}"
+                    TextAlignment="Right" />
+                <TextBox
+                    Width="100"
+                    Margin="25,5"
+                    IsEnabled="{Binding ElementName=chbPayEnable, Path=IsChecked}"
+                    Text="{Binding Tonnage7Max}"
+                    TextAlignment="Right" />
+            </StackPanel>
+            <TextBox
+                Grid.Row="7"
+                Grid.Column="1"
+                Width="100"
+                Margin="0,5"
+                IsEnabled="{Binding ElementName=chbPayEnable, Path=IsChecked}"
+                Text="{Binding Fees7}"
+                TextAlignment="Right"
+                Visibility="Collapsed" />
+
+            <StackPanel
+                Grid.Row="8"
+                Grid.Column="0"
+                Orientation="Horizontal"
+                Visibility="Collapsed">
+                <TextBox
+                    Width="100"
+                    Margin="35,5,15,5"
+                    IsEnabled="{Binding ElementName=chbPayEnable, Path=IsChecked}"
+                    Text="{Binding Tonnage8Min}"
+                    TextAlignment="Right" />
+                <TextBox
+                    Width="100"
+                    Margin="25,5"
+                    IsEnabled="{Binding ElementName=chbPayEnable, Path=IsChecked}"
+                    Text="{Binding Tonnage8Max}"
+                    TextAlignment="Right" />
+            </StackPanel>
+            <TextBox
+                Grid.Row="8"
+                Grid.Column="1"
+                Width="100"
+                Margin="0,5"
+                IsEnabled="{Binding ElementName=chbPayEnable, Path=IsChecked}"
+                Text="{Binding Fees8}"
+                TextAlignment="Right"
+                Visibility="Collapsed" />
+            <StackPanel
+                Grid.Row="9"
+                Grid.Column="0"
+                Orientation="Horizontal"
+                Visibility="Collapsed">
+                <TextBox
+                    Width="100"
+                    Margin="35,5,15,5"
+                    IsEnabled="{Binding ElementName=chbPayEnable, Path=IsChecked}"
+                    Text="{Binding Tonnage9Min}"
+                    TextAlignment="Right" />
+                <TextBox
+                    Width="100"
+                    Margin="25,5"
+                    IsEnabled="{Binding ElementName=chbPayEnable, Path=IsChecked}"
+                    Text="{Binding Tonnage9Max}"
+                    TextAlignment="Right" />
+            </StackPanel>
+            <TextBox
+                Grid.Row="9"
+                Grid.Column="1"
+                Width="100"
+                Margin="0,5"
+                IsEnabled="{Binding ElementName=chbPayEnable, Path=IsChecked}"
+                Text="{Binding Fees9}"
+                TextAlignment="Right"
+                Visibility="Collapsed" />
+        </Grid>
+        <Button
+            Width="150"
+            Height="35"
+            Margin="20"
+            Background="#FF169BD5"
+            BorderBrush="#FF169BD5"
+            Command="{s:Action Confirm}"
+            Content="确定"
+            FontFamily="SimSun"
+            FontSize="12"
+            FontWeight="Bold"
+            Foreground="#ffffffff"
+            Style="{StaticResource MetroButton}">
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="#FFFFFFFF"
+                        BorderThickness="1"
+                        CornerRadius="7">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+    </StackPanel>
+
+</Controls:MetroWindow>

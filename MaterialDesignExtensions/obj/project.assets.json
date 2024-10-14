@@ -157,11 +157,11 @@
   "project": {
     "version": "4.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\liuma\\Source\\Repos\\lanquanAVS1\\MaterialDesignExtensions\\MaterialDesignExtensions.csproj",
+      "projectUniqueName": "C:\\Users\\liuma\\source\\repos\\-\\MaterialDesignExtensions\\MaterialDesignExtensions.csproj",
       "projectName": "MaterialDesignExtensions",
-      "projectPath": "C:\\Users\\liuma\\Source\\Repos\\lanquanAVS1\\MaterialDesignExtensions\\MaterialDesignExtensions.csproj",
+      "projectPath": "C:\\Users\\liuma\\source\\repos\\-\\MaterialDesignExtensions\\MaterialDesignExtensions.csproj",
       "packagesPath": "C:\\Users\\liuma\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\liuma\\Source\\Repos\\lanquanAVS1\\MaterialDesignExtensions\\obj\\",
+      "outputPath": "C:\\Users\\liuma\\source\\repos\\-\\MaterialDesignExtensions\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\liuma\\AppData\\Roaming\\NuGet\\NuGet.Config",

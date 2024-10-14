@@ -1,0 +1,533 @@
+﻿<mde:MaterialWindow
+    x:Class="AWSV2.Views.ShellView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:commonConverters="clr-namespace:Common.Converters;assembly=Common"
+    xmlns:converter="clr-namespace:AWSV2.Converter"
+    xmlns:local="clr-namespace:AWSV2.Views"
+    xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mde="clr-namespace:MaterialDesignExtensions.Controls;assembly=MaterialDesignExtensions"
+    xmlns:s="https://github.com/canton7/Stylet"
+    xmlns:vmTpl="clr-namespace:AWSV2.ViewModels.ShellViewHomeTemplate"
+    Title="篮圈AVS1"
+    MinWidth="1366"
+    MinHeight="768"
+    Background="{StaticResource MaterialDesignPaper}"
+    BorderThickness="0"
+    Icon="/Resources/Img/32.ico"
+    StateChanged="{s:Action MainWindowStateChanged}"
+    TextElement.FontFamily="Microsoft YaHei"
+    TextElement.FontSize="12"
+    TextElement.FontWeight="Medium"
+    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+    WindowStartupLocation="CenterScreen"
+    WindowStyle="None">
+
+    <Window.Resources>
+        <ResourceDictionary>
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/ViewModels/ShellViewHomeTemplate/DefaultView.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/ViewModels/ShellViewHomeTemplate/MonitorView.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <commonConverters:BooleanMapConverter
+                x:Key="activeBtnVisibleCvt"
+                FalseValue="{x:Static Visibility.Visible}"
+                TrueValue="{x:Static Visibility.Collapsed}" />
+            <converter:HomeTemplateTypeMenuConverter x:Key="homeTemplateTypeMenuConverter" />
+            <converter:WeighingControlFormatStringConverter x:Key="weighingControlFormatStringConverter" />
+
+            <vmTpl:HomeTemplateType x:Key="DefaultEnumTemplate">Default</vmTpl:HomeTemplateType>
+            <vmTpl:HomeTemplateType x:Key="MonitorEnumTemplate">Monitor</vmTpl:HomeTemplateType>
+
+            <vmTpl:HomeLayoutTemplateSelector
+                x:Key="homeTemplateSelector"
+                Default="{StaticResource HomeDefaultDataTemplate}"
+                Monitor="{StaticResource HomeMonitorDataTemplate}" />
+
+        </ResourceDictionary>
+
+    </Window.Resources>
+    <Grid Name="Grid_Main" Loaded="{s:Action MainGridLoadedCmd}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="64" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <DockPanel Margin="12,12,12,0">
+
+            <Button
+                Margin="0,0,8,0"
+                Background="Transparent"
+                BorderBrush="Transparent"
+                BorderThickness="0"
+                DockPanel.Dock="Left"
+                Style="{StaticResource MaterialDesignIconButton}">
+                <Image
+                    Grid.Column="0"
+                    Margin="8"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Source="/Resources/Img/logo.png" />
+            </Button>
+            <Border
+                Height="28"
+                BorderBrush="White"
+                BorderThickness="0.5"
+                DockPanel.Dock="Left" />
+            <StackPanel
+                VerticalAlignment="Center"
+                DockPanel.Dock="Left"
+                Orientation="Horizontal">
+                <Menu md:MenuAssist.TopLevelMenuItemHeight="32">
+                    <MenuItem
+                        Margin="12,0"
+                        Background="{x:Null}"
+                        Command="{s:Action ShowWeighingRecordWindow}"
+                        CommandParameter="User"
+                        FontSize="16"
+                        Foreground="{StaticResource MaterialDesignBody}"
+                        Header="过磅记录" />
+                </Menu>
+
+                <Menu md:MenuAssist.TopLevelMenuItemHeight="32">
+                    <MenuItem
+                        Margin="12,0"
+                        Command="{s:Action ShowDataManagementWindow}"
+                        CommandParameter="User"
+                        FontSize="16"
+                        Foreground="{StaticResource MaterialDesignBody}"
+                        Header="数据录入"
+                        IsEnabled="{Binding EnableDataManage}" />
+                </Menu>
+
+                <Menu md:MenuAssist.TopLevelMenuItemHeight="32">
+                    <MenuItem
+                        Margin="12,0"
+                        Command="{s:Action OpenWeighPlanWindow}"
+                        CommandParameter="User"
+                        FontSize="16"
+                        Foreground="{StaticResource MaterialDesignBody}"
+                        Header="计划下单"
+                        IsEnabled="{Binding EnableDataManage}" />
+                </Menu>
+
+                <Menu md:MenuAssist.TopLevelMenuItemHeight="32">
+                    <MenuItem
+                        Margin="12,0"
+                        Command="{s:Action ShowSettingWindow}"
+                        CommandParameter="User"
+                        FontSize="16"
+                        Foreground="{StaticResource MaterialDesignBody}"
+                        Header="系统设置"
+                        IsEnabled="{Binding EnableSetting}" />
+                </Menu>
+
+                <!--<Menu md:MenuAssist.TopLevelMenuItemHeight="32">
+                    <MenuItem
+                        Margin="12,0"
+                        FontSize="16"
+                        Foreground="{StaticResource MaterialDesignBody}"
+                        Header="界面编辑">
+                -->
+                <!--<MenuItem
+                            Command="{s:Action SwitchHomeTemplate}"
+                            CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Tag}"
+                            Tag="{StaticResource DefaultEnumTemplate}">
+                            <MenuItem.Header>
+                                <MultiBinding Converter="{StaticResource homeTemplateTypeMenuConverter}">
+                                    <Binding Path="Tag" RelativeSource="{RelativeSource Mode=Self}" />
+                                    <Binding Path="TemplateType" />
+                                </MultiBinding>
+                            </MenuItem.Header>
+                        </MenuItem>-->
+                <!--
+                        <MenuItem
+                            Command="{s:Action SwitchHomeTemplate}"
+                            CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Tag}"
+                            Tag="{StaticResource MonitorEnumTemplate}">
+                            <MenuItem.Header>
+                                <MultiBinding Converter="{StaticResource homeTemplateTypeMenuConverter}">
+                                    <Binding Path="Tag" RelativeSource="{RelativeSource Mode=Self}" />
+                                    <Binding Path="TemplateType" />
+                                </MultiBinding>
+                            </MenuItem.Header>
+                        </MenuItem>
+                    </MenuItem>
+                </Menu>-->
+
+
+            </StackPanel>
+            <!--<st:ScrollingTextControl
+            Grid.Column="2"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Center"
+            FontSize="16"
+            Foreground="#7e7e7f"
+            RunSpeed="100"
+            StopSecond="5000"
+            Text="{Binding TitleMessage}" />-->
+
+            <StackPanel
+                HorizontalAlignment="Right"
+                DockPanel.Dock="Right"
+                Orientation="Horizontal">
+
+                <StackPanel Orientation="Horizontal">
+
+                    <StackPanel
+                        VerticalAlignment="Center"
+                        Orientation="Horizontal"
+                        Visibility="{Binding AppLicenseInfo.OnTrial, Converter={StaticResource boolToVisibleConverter}}">
+                        <TextBlock Text="试用期剩余：" />
+                        <TextBlock Margin="4,0" Text="{Binding AppLicenseInfo.LeftDays}" />
+                    </StackPanel>
+                    <Button
+                        Height="32"
+                        Margin="8,0,0,0"
+                        Background="#00197d"
+                        Command="{s:Action ShowActiveDialog}"
+                        Content="立即激活"
+                        FontSize="14"
+                        Foreground="White"
+                        Visibility="{Binding AppLicenseInfo.IsActive, Converter={StaticResource activeBtnVisibleCvt}}" />
+                    <Menu Margin="4,0">
+                        <StackPanel>
+                            <md:PackIcon
+                                Width="20"
+                                Height="20"
+                                Margin="0,0,0,4"
+                                HorizontalAlignment="Center"
+                                Kind="HelpCircleOutline" />
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                FontSize="12"
+                                Text="新手引导" />
+                        </StackPanel>
+                    </Menu>
+                    <Menu Margin="4,0">
+
+                        <MenuItem Foreground="{StaticResource MaterialDesignBody}" IsEnabled="{Binding EnableSetting}">
+                            <MenuItem.Header>
+                                <StackPanel>
+                                    <md:PackIcon
+                                        Width="20"
+                                        Height="20"
+                                        Margin="0,0,0,4"
+                                        HorizontalAlignment="Center"
+                                        Kind="FormatListBulleted" />
+                                    <TextBlock
+                                        HorizontalAlignment="Center"
+                                        FontSize="12"
+                                        Text="更多" />
+                                </StackPanel>
+                            </MenuItem.Header>
+                            <MenuItem Header="测试">
+                                <MenuItem
+                                    Margin="12,0"
+                                    Command="{s:Action TestIDCardRead}"
+                                    FontSize="16"
+                                    Foreground="{StaticResource MaterialDesignBody}"
+                                    Header="读身份证" />
+                                <MenuItem
+                                    Margin="12,0"
+                                    Command="{s:Action TestGateOpen}"
+                                    CommandParameter="{StaticResource TrueValue}"
+                                    FontSize="16"
+                                    Foreground="{StaticResource MaterialDesignBody}"
+                                    Header="开闸" />
+                                <MenuItem
+                                    Margin="12,0"
+                                    Command="{s:Action TestGateOpen}"
+                                    CommandParameter="{StaticResource FalseValue}"
+                                    Foreground="{StaticResource MaterialDesignBody}"
+                                    Header="关闸" />
+                                <MenuItem
+                                    Margin="12,0"
+                                    Command="{s:Action TestHIKCaptureImage}"
+                                    FontSize="16"
+                                    Foreground="{StaticResource MaterialDesignBody}"
+                                    Header="海康抓图" />
+                                <MenuItem
+                                    Margin="12,0"
+                                    Command="{s:Action TestTTS}"
+                                    FontSize="16"
+                                    Foreground="{StaticResource MaterialDesignBody}"
+                                    Header="测试TTS(第二次称重)" />
+                                <!--<MenuItem
+Margin="12,0"
+Command="{s:Action TestWeightValue}"
+FontSize="16"
+Foreground="{StaticResource MaterialDesignBody}"
+Header="设置仪表重量" />-->
+                            </MenuItem>
+                            <MenuItem Header="调试工具">
+                                <MenuItem
+                                    Command="{s:Action StartProcess}"
+                                    CommandParameter="CarmeraTools\LPRConfigTool.exe"
+                                    Header="臻识" />
+                                <MenuItem
+                                    Command="{s:Action StartProcess}"
+                                    CommandParameter="ControllerTools\串口调试助手 v4.3.29.exe"
+                                    Header="串口" />
+                            </MenuItem>
+                            <MenuItem
+                                Command="{s:Action ShowAboutAWS}"
+                                CommandParameter="User"
+                                Header="关于" />
+                        </MenuItem>
+                    </Menu>
+                    <Border
+                        Width="4"
+                        Background="{StaticResource PrimaryHueDarkBrush}"
+                        Opacity=".6" />
+                    <!--  -创建一个隐藏按钮用于承载切换称重表单命令, 因为不能直接动态绑定,也懒得写一个Command实现类 阿吉 2024年3月4日17点39分  -->
+                    <!--<Button
+                        Name="Btn_SwitchWeightForm"
+                        Command="{s:Action SwitchWeightForm}"
+                        Visibility="Collapsed" />
+                    <Menu
+                        Margin="4,0"
+                        VerticalAlignment="Center"
+                        md:MenuAssist.TopLevelMenuItemHeight="32"
+                        Foreground="{StaticResource MaterialDesignBody}">
+                        <MenuItem ItemsSource="{Binding WeightFormTemplateSheetNames}">
+                            <MenuItem.Header>
+                                <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                                    <TextBlock
+                                        Margin="0,0,8,0"
+                                        VerticalAlignment="Center"
+                                        Foreground="{StaticResource MaterialDesignBody}"
+                                        Text="{Binding SelectedWeightFormTemplateSheet}" />
+                                    <md:PackIcon
+                                        Width="22"
+                                        Height="22"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Center"
+                                        Foreground="{StaticResource MaterialDesignBody}"
+                                        Kind="MenuDown" />
+                                </StackPanel>
+                            </MenuItem.Header>
+                            <MenuItem.ItemContainerStyle>
+                                <Style BasedOn="{StaticResource MaterialDesignMenuItem}" TargetType="MenuItem">
+                                    <Setter Property="Header" Value="{Binding}" />
+                                    <Setter Property="Command" Value="{Binding ElementName=Btn_SwitchWeightForm, Path=Command}" />
+                                    <Setter Property="CommandParameter" Value="{Binding}" />
+                                </Style>
+                            </MenuItem.ItemContainerStyle>
+                        </MenuItem>
+                    </Menu>
+
+                    <Menu
+                        Margin="4,0"
+                        VerticalAlignment="Center"
+                        md:MenuAssist.TopLevelMenuItemHeight="32"
+                        Foreground="{StaticResource MaterialDesignBody}">
+                        <MenuItem>
+                            <MenuItem.Header>
+                                <StackPanel Orientation="Horizontal">
+
+                                    <TextBlock
+                                        Margin="0,0,8,0"
+                                        VerticalAlignment="Center"
+                                        Foreground="{StaticResource AJBlack}"
+                                        Text="{Binding WeighingControl, Converter={StaticResource weighingControlFormatStringConverter}}" />
+                                    <md:PackIcon
+                                        Width="22"
+                                        Height="22"
+                                        VerticalAlignment="Center"
+                                        Kind="MenuDown" />
+                                </StackPanel>
+                            </MenuItem.Header>
+                            <MenuItem Command="{s:Action SwitchWeighingControl}" CommandParameter="Auto">
+                                <MenuItem.Header>
+                                    <StackPanel Orientation="Horizontal">
+
+                                        <TextBlock
+                                            Margin="4,0"
+                                            VerticalAlignment="Center"
+                                            Foreground="{StaticResource AJBlack}"
+                                            Text="自动称重" />
+                                    </StackPanel>
+                                </MenuItem.Header>
+                            </MenuItem>
+                            <MenuItem Command="{s:Action SwitchWeighingControl}" CommandParameter="Hand">
+                                <MenuItem.Header>
+                                    <StackPanel Orientation="Horizontal">
+
+                                        <TextBlock
+                                            Margin="4,0"
+                                            VerticalAlignment="Center"
+                                            Foreground="{StaticResource AJBlack}"
+                                            Text="手动称重" />
+                                    </StackPanel>
+                                </MenuItem.Header>
+                            </MenuItem>
+                            <MenuItem Command="{s:Action SwitchWeighingControl}" CommandParameter="Btn">
+                                <MenuItem.Header>
+                                    <StackPanel Orientation="Horizontal">
+
+                                        <TextBlock
+                                            Margin="4,0"
+                                            VerticalAlignment="Center"
+                                            Foreground="{StaticResource AJBlack}"
+                                            Text="按钮称重" />
+                                    </StackPanel>
+                                </MenuItem.Header>
+                            </MenuItem>
+                        </MenuItem>
+
+                    </Menu>-->
+                    <!--<Button
+                    Margin="8,0"
+                    VerticalContentAlignment="Center"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Command="{s:Action OpenWeighingSet}"
+                    FontSize="16"
+                    FontWeight="Normal"
+                    Style="{StaticResource Button NoneStyle}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image
+                            Width="20"
+                            Height="20"
+                            VerticalAlignment="Center"
+                            Source="{Binding WeighingImg}" />
+                        <TextBlock
+                            Margin="8,0"
+                            Foreground="{StaticResource PrimaryHueDarkForegroundBrush}"
+                            Text="{Binding WeighingText}" />
+                        <Image
+                            Width="12"
+                            Height="7"
+                            VerticalAlignment="Center"
+                            Source="/Resources/Img/xia.png" />
+                    </StackPanel>
+                </Button>-->
+
+                    <Menu Margin="4,0" VerticalContentAlignment="Center">
+                        <MenuItem>
+                            <MenuItem.Header>
+                                <StackPanel>
+                                    <md:PackIcon
+                                        Width="24"
+                                        Height="24"
+                                        Margin="0,0,0,0"
+                                        HorizontalAlignment="Center"
+                                        Kind="AccountOutline" />
+                                    <TextBlock
+                                        HorizontalAlignment="Center"
+                                        FontSize="12"
+                                        Text="{Binding CurrentUserName, FallbackValue=--}" />
+                                </StackPanel>
+                            </MenuItem.Header>
+                            <MenuItem Command="{s:Action OpenChangePasswordDialog}" Header="修改密码" />
+                            <MenuItem Command="{s:Action WindowCloseCmd}" Header="退出登录" />
+                        </MenuItem>
+
+                    </Menu>
+
+
+                </StackPanel>
+                <StackPanel
+                    Grid.Column="1"
+                    Margin="8,0"
+                    Orientation="Horizontal">
+                    <!--<Button
+                        Margin="0,4"
+                        VerticalAlignment="Center"
+                        Click="MinButton_Click"
+                        Foreground="Transparent"
+                        Style="{StaticResource Button NoneStyle}">
+                        <md:PackIcon
+                            Width="22"
+                            Height="22"
+                            Foreground="{StaticResource MaterialDesignBody}"
+                            Kind="Minimize" />
+                    </Button>-->
+                    <!--<Button
+                        Margin="0,4"
+                        VerticalAlignment="Center"
+                        Click="MaxButton_Click"
+                        Foreground="Transparent"
+                        Style="{StaticResource Button NoneStyle}">
+                        <md:PackIcon
+                            Width="22"
+                            Height="22"
+                            Foreground="{StaticResource MaterialDesignBody}"
+                            Kind="Maximize" />
+                    </Button>-->
+                    <!--<Button
+                        Margin="0,4"
+                        VerticalAlignment="Center"
+                        Click="{s:Action WindowCloseCmd}"
+                        Cursor="Hand"
+                        Foreground="Transparent"
+                        Style="{StaticResource Button NoneStyle}">
+                        <md:PackIcon
+                            Width="22"
+                            Height="22"
+                            Foreground="{StaticResource MaterialDesignBody}"
+                            Kind="Close" />
+                    </Button>-->
+                </StackPanel>
+            </StackPanel>
+
+        </DockPanel>
+
+        <md:DialogHost
+            Grid.Row="1"
+            ClipToBounds="True"
+            DialogMargin="0"
+            Identifier="root">
+            <ContentControl
+                Margin="12"
+                Content="{Binding ElementName=Grid_Main, Path=DataContext}"
+                ContentTemplateSelector="{StaticResource homeTemplateSelector}" />
+        </md:DialogHost>
+
+    </Grid>
+
+
+    <mde:MaterialWindow.InputBindings>
+        <KeyBinding
+            Key="F1"
+            Command="{s:Action HandToBarrier}"
+            CommandParameter="up1"
+            Gesture="F1" />
+        <KeyBinding
+            Key="F2"
+            Command="{s:Action HandToBarrier}"
+            CommandParameter="up2"
+            Gesture="F2" />
+        <KeyBinding
+            Key="F3"
+            Command="{s:Action HandToBarrier}"
+            CommandParameter="upall"
+            Gesture="F3" />
+        <KeyBinding
+            Key="F4"
+            Command="{s:Action HandToBarrier}"
+            CommandParameter="downall"
+            Gesture="F4" />
+        <KeyBinding
+            Key="F5"
+            Command="{s:Action RefreshWeighForm}"
+            CommandParameter="{StaticResource TrueValue}"
+            Gesture="F5" />
+
+        <KeyBinding
+            Key="F11"
+            Command="{s:Action FastWeigthCorrect}"
+            CommandParameter="f11"
+            Gesture="F11" />
+
+        <KeyBinding
+            Key="F12"
+            Command="{s:Action FastWeigthCorrect}"
+            CommandParameter="f12"
+            Gesture="F12" />
+    </mde:MaterialWindow.InputBindings>
+
+
+</mde:MaterialWindow>

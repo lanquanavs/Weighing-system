@@ -1,0 +1,239 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\liuma\\source\\repos\\-\\AWSV2\\AWSV2.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\liuma\\source\\repos\\-\\AWSV2\\AWSV2.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\liuma\\source\\repos\\-\\AWSV2\\AWSV2.csproj",
+        "projectName": "篮圈AVS1",
+        "projectPath": "C:\\Users\\liuma\\source\\repos\\-\\AWSV2\\AWSV2.csproj",
+        "packagesPath": "C:\\Users\\liuma\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\liuma\\source\\repos\\-\\AWSV2\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\liuma\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0-windows"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0-windows7.0": {
+            "targetAlias": "net8.0-windows",
+            "projectReferences": {
+              "C:\\Users\\liuma\\source\\repos\\-\\AJDatabase.Migrations.MsSql\\AJDatabase.Migrations.MsSql.csproj": {
+                "projectPath": "C:\\Users\\liuma\\source\\repos\\-\\AJDatabase.Migrations.MsSql\\AJDatabase.Migrations.MsSql.csproj"
+              },
+              "C:\\Users\\liuma\\source\\repos\\-\\AJDatabase.Migrations.MySql\\AJDatabase.Migrations.MySql.csproj": {
+                "projectPath": "C:\\Users\\liuma\\source\\repos\\-\\AJDatabase.Migrations.MySql\\AJDatabase.Migrations.MySql.csproj"
+              },
+              "C:\\Users\\liuma\\source\\repos\\-\\AJDatabase.Migrations.Sqlite\\AJDatabase.Migrations.Sqlite.csproj": {
+                "projectPath": "C:\\Users\\liuma\\source\\repos\\-\\AJDatabase.Migrations.Sqlite\\AJDatabase.Migrations.Sqlite.csproj"
+              },
+              "C:\\Users\\liuma\\source\\repos\\-\\AWSControls\\AWSControls.csproj": {
+                "projectPath": "C:\\Users\\liuma\\source\\repos\\-\\AWSControls\\AWSControls.csproj"
+              },
+              "C:\\Users\\liuma\\source\\repos\\-\\Common\\Common.csproj": {
+                "projectPath": "C:\\Users\\liuma\\source\\repos\\-\\Common\\Common.csproj"
+              },
+              "C:\\Users\\liuma\\source\\repos\\-\\MaterialDesignExtensions\\MaterialDesignExtensions.csproj": {
+                "projectPath": "C:\\Users\\liuma\\source\\repos\\-\\MaterialDesignExtensions\\MaterialDesignExtensions.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0-windows7.0": {
+          "targetAlias": "net8.0-windows",
+          "dependencies": {
+            "Aspose.Cells": {
+              "target": "Package",
+              "version": "[8.7.1, )"
+            },
+            "Autoupdater.NET.Official": {
+              "target": "Package",
+              "version": "[1.9.1, )"
+            },
+            "Flee": {
+              "target": "Package",
+              "version": "[2.0.0, )"
+            },
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[8.6.0, )"
+            },
+            "LiveChartsCore.SkiaSharpView.WPF": {
+              "target": "Package",
+              "version": "[2.0.0-rc2, )"
+            },
+            "MQTTnet": {
+              "target": "Package",
+              "version": "[4.3.1.873, )"
+            },
+            "MaterialDesignThemes": {
+              "target": "Package",
+              "version": "[4.9.0, )"
+            },
+            "Microsoft.Xaml.Behaviors.Wpf": {
+              "target": "Package",
+              "version": "[1.1.39, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
+            "PropertyChanged.Fody": {
+              "target": "Package",
+              "version": "[2.6.1, )"
+            },
+            "Quartz": {
+              "target": "Package",
+              "version": "[3.7.0, )"
+            },
+            "Stylet": {
+              "target": "Package",
+              "version": "[1.3.0, )"
+            },
+            "System.ComponentModel.Composition": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "System.Management": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "System.Text.Encoding.CodePages": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "ThoughtWorks.QRCode": {
+              "target": "Package",
+              "version": "[1.1.0, )"
+            },
+            "WPF.ListViewLayoutManager": {
+              "target": "Package",
+              "version": "[2.0.0, )"
+            },
+            "log4net": {
+              "target": "Package",
+              "version": "[2.0.17, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\liuma\\source\\repos\\-\\MaterialDesignExtensions\\MaterialDesignExtensions.csproj": {
+      "version": "4.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\liuma\\source\\repos\\-\\MaterialDesignExtensions\\MaterialDesignExtensions.csproj",
+        "projectName": "MaterialDesignExtensions",
+        "projectPath": "C:\\Users\\liuma\\source\\repos\\-\\MaterialDesignExtensions\\MaterialDesignExtensions.csproj",
+        "packagesPath": "C:\\Users\\liuma\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\liuma\\source\\repos\\-\\MaterialDesignExtensions\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\liuma\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0-windows"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0-windows7.0": {
+            "targetAlias": "net8.0-windows",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0-windows7.0": {
+          "targetAlias": "net8.0-windows",
+          "dependencies": {
+            "MaterialDesignColors": {
+              "target": "Package",
+              "version": "[2.1.4, )"
+            },
+            "MaterialDesignThemes": {
+              "target": "Package",
+              "version": "[4.9.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WPF": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

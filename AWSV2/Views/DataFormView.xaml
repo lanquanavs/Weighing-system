@@ -1,0 +1,534 @@
+﻿<UserControl
+    x:Class="AWSV2.Views.DataFormView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:AWSV2.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Height="Auto"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <Style TargetType="ListBoxItem">
+            <Style.Resources>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent" />
+                <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="Transparent" />
+            </Style.Resources>
+        </Style>
+
+        <Style TargetType="Image">
+            <Setter Property="HorizontalAlignment" Value="Right" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Stretch" Value="None" />
+            <Setter Property="Height" Value="16" />
+            <Setter Property="Width" Value="16" />
+            <Setter Property="Margin" Value="0,7" />
+        </Style>
+
+        <Style x:Key="livechatStyle" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Foreground" Value="#000000" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="1"
+                            CornerRadius="22.5">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="1" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="yellowStyle" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="BorderBrush" Value="{StaticResource PrimaryHueLightBrush}" />
+            <Setter Property="Background" Value="{StaticResource PrimaryHueLightBrush}" />
+            <Setter Property="Foreground" Value="#000000" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="1"
+                            CornerRadius="22.5">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="1" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="whiteStyle" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Background" Value="#F5F7F9" />
+            <Setter Property="BorderBrush" Value="#E1E6EC" />
+            <Setter Property="Foreground" Value="#585859" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="1"
+                            CornerRadius="22.5">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="1" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <Grid
+        Width="Auto"
+        Height="Auto"
+        Background="White">
+        <Border
+            Grid.Column="0"
+            Width="Auto"
+            Height="Auto"
+            Padding="10,0,10,0"
+            VerticalAlignment="Center"
+            BorderBrush="#E0E5EC">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100" />
+                    <RowDefinition Height="200*" />
+                    <RowDefinition Height="200*" />
+                    <RowDefinition Height="10" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
+                    Height="Auto"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    Content="当天称重数据"
+                    FontSize="40"
+                    Foreground="Black" />
+                <Border
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Padding="10"
+                    BorderBrush="#E0E5EC"
+                    BorderThickness="0,0,1,1">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="70" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Height="50"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            Content="总毛重"
+                            FontSize="24"
+                            Foreground="#666666" />
+                        <Label
+                            x:Name="mz"
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Height="50"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            Content="{Binding mz}"
+                            FontSize="24"
+                            FontWeight="Bold"
+                            Foreground="#000000" />
+                        <Label
+                            x:Name="mz_1"
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            Height="50"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            Content="{Binding mz_1}"
+                            FontSize="24"
+                            Foreground="#CFCECE" />
+                        <Button
+                            Grid.Row="3"
+                            Grid.Column="0"
+                            Width="70"
+                            Height="28"
+                            Content="前一天"
+                            Cursor="None"
+                            FontSize="14"
+                            Foreground="#FFFFFF"
+                            Style="{StaticResource Button NoneStyle}">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border
+                                        Background="#CFCECE"
+                                        BorderBrush="#FFFFFF"
+                                        BorderThickness="1"
+                                        CornerRadius="15">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </Grid>
+                </Border>
+                <Border
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Padding="10"
+                    BorderBrush="#E0E5EC"
+                    BorderThickness="0,0,1,1">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Row="1"
+                            Grid.ColumnSpan="2"
+                            Height="50"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            Content="总净重"
+                            FontSize="24"
+                            Foreground="#666666" />
+                        <Label
+                            x:Name="jz"
+                            Grid.Row="2"
+                            Grid.ColumnSpan="2"
+                            Height="50"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            Content="{Binding jz}"
+                            FontSize="24"
+                            FontWeight="Bold"
+                            Foreground="#000000" />
+                        <Label
+                            x:Name="jz_1"
+                            Grid.Row="3"
+                            Grid.ColumnSpan="2"
+                            Height="50"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            Content="{Binding jz_1}"
+                            FontSize="24"
+                            Foreground="#CFCECE" />
+
+                    </Grid>
+                </Border>
+                <Border
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    Padding="10"
+                    BorderBrush="#E0E5EC"
+                    BorderThickness="0,0,0,1">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Row="1"
+                            Grid.ColumnSpan="2"
+                            Height="50"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            Content="总车次"
+                            FontSize="24"
+                            Foreground="#666666" />
+                        <Label
+                            x:Name="cc"
+                            Grid.Row="2"
+                            Grid.ColumnSpan="2"
+                            Height="50"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            Content="{Binding cc}"
+                            FontSize="24"
+                            FontWeight="Bold"
+                            Foreground="#000000" />
+                        <Label
+                            x:Name="cc_1"
+                            Grid.Row="3"
+                            Grid.ColumnSpan="2"
+                            Height="50"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            Content="{Binding cc_1}"
+                            FontSize="24"
+                            Foreground="#CFCECE" />
+
+                    </Grid>
+                </Border>
+
+                <Border
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Padding="10"
+                    BorderBrush="#E0E5EC"
+                    BorderThickness="0,0,1,0">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="70" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Height="50"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            Content="称重记录"
+                            FontSize="24"
+                            Foreground="#666666" />
+                        <Label
+                            x:Name="cjjl"
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Height="50"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            Content="{Binding cjjl}"
+                            FontSize="24"
+                            FontWeight="Bold"
+                            Foreground="#000000" />
+                        <Label
+                            x:Name="cjjl_1"
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            Height="50"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            Content="{Binding cjjl_1}"
+                            FontSize="24"
+                            Foreground="#CFCECE" />
+                        <Button
+                            Grid.Row="3"
+                            Grid.Column="0"
+                            Width="70"
+                            Height="28"
+                            Content="前一天"
+                            Cursor="None"
+                            FontSize="14"
+                            Foreground="#FFFFFF"
+                            Style="{StaticResource Button NoneStyle}">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border
+                                        Background="#CFCECE"
+                                        BorderBrush="#FFFFFF"
+                                        BorderThickness="1"
+                                        CornerRadius="15">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </Grid>
+                </Border>
+                <Border
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    Padding="10"
+                    BorderBrush="#E0E5EC"
+                    BorderThickness="0,0,1,0">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Row="1"
+                            Grid.ColumnSpan="2"
+                            Height="50"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            Content="{Binding GblxXS}"
+                            FontSize="24"
+                            Foreground="#666666" />
+                        <Label
+                            x:Name="gblx1"
+                            Grid.Row="2"
+                            Grid.ColumnSpan="2"
+                            Height="50"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            Content="{Binding gblx1}"
+                            FontSize="24"
+                            FontWeight="Bold"
+                            Foreground="#000000" />
+                        <Label
+                            x:Name="gblx1_1"
+                            Grid.Row="3"
+                            Grid.ColumnSpan="2"
+                            Height="50"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            Content="{Binding gblx1_1}"
+                            FontSize="24"
+                            Foreground="#CFCECE" />
+                    </Grid>
+                </Border>
+                <Border
+                    Grid.Row="2"
+                    Grid.Column="2"
+                    Padding="10"
+                    BorderBrush="#E0E5EC"
+                    BorderThickness="0,0,0,0">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Row="1"
+                            Grid.ColumnSpan="2"
+                            Height="50"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            Content="{Binding GblxCG}"
+                            FontSize="24"
+                            Foreground="#666666" />
+                        <Label
+                            x:Name="gblx2"
+                            Grid.Row="2"
+                            Grid.ColumnSpan="2"
+                            Height="50"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            Content="{Binding gblx2}"
+                            FontSize="24"
+                            FontWeight="Bold"
+                            Foreground="#000000" />
+                        <Label
+                            x:Name="gblx2_1"
+                            Grid.Row="3"
+                            Grid.ColumnSpan="2"
+                            Height="50"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            Content="{Binding gblx2_1}"
+                            FontSize="24"
+                            Foreground="#CFCECE" />
+                    </Grid>
+                </Border>
+                <Border
+                    Grid.Row="3"
+                    Grid.ColumnSpan="3"
+                    Margin="0,0,0,0"
+                    Visibility="Hidden">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Button
+                            x:Name="TotalToday"
+                            Grid.Column="0"
+                            Width="135"
+                            Height="45"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom"
+                            Content="当天"
+                            FontSize="18"
+                            Style="{StaticResource yellowStyle}" />
+                        <Button
+                            x:Name="TotalWeek"
+                            Grid.Column="1"
+                            Width="135"
+                            Height="45"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom"
+                            Content="当周"
+                            FontSize="16"
+                            Style="{StaticResource whiteStyle}" />
+                        <Button
+                            x:Name="TotalMonth"
+                            Grid.Column="2"
+                            Width="135"
+                            Height="45"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom"
+                            Content="当月"
+                            FontSize="16"
+                            Style="{StaticResource whiteStyle}" />
+                        <Button
+                            x:Name="TotalYear"
+                            Grid.Column="3"
+                            Width="135"
+                            Height="45"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom"
+                            Content="当年"
+                            FontSize="16"
+                            Style="{StaticResource whiteStyle}" />
+                    </Grid>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+
+</UserControl>

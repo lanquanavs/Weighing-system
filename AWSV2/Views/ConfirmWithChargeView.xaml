@@ -1,0 +1,177 @@
+﻿<Controls:MetroWindow
+    x:Class="AWSV2.Views.ConfirmWithChargeView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+    xmlns:s="https://github.com/canton7/Stylet"
+    MinWidth="1024"
+    MinHeight="768"
+    AllowsTransparency="True"
+    BorderThickness="0"
+    ResizeMode="CanMinimize"
+    ShowCloseButton="False"
+    ShowInTaskbar="False"
+    ShowMaxRestoreButton="False"
+    ShowMinButton="False"
+    ShowTitleBar="False"
+    SizeToContent="Manual"
+    WindowState="{Binding SDWindowState}"
+    WindowStyle="None">
+    <Window.Background>
+        <SolidColorBrush Opacity="0.7" Color="Black" />
+    </Window.Background>
+    <Window.InputBindings>
+        <KeyBinding
+            Key="Space"
+            Command="{s:Action Confirm}"
+            Gesture="+Space" />
+    </Window.InputBindings>
+    <DockPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50*" />
+                <ColumnDefinition Width="523" />
+                <ColumnDefinition Width="50*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50*" />
+                <RowDefinition Height="240" />
+                <RowDefinition Height="50*" />
+            </Grid.RowDefinitions>
+            <Border
+                Name="user"
+                Grid.Row="1"
+                Grid.Column="1"
+                Width="523"
+                Height="240"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                Background="White"
+                CornerRadius="10">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50*" />
+                        <ColumnDefinition Width="50*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="60" />
+                        <RowDefinition Height="70" />
+                        <RowDefinition Height="60" />
+                    </Grid.RowDefinitions>
+                    <Image
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Width="27"
+                        Height="25"
+                        Margin="0,0,20,0"
+                        HorizontalAlignment="Right"
+                        Source="/Resources/Img/pop.png" />
+
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        HorizontalAlignment="Center"
+                        Content="本次过磅总费用"
+                        FontFamily="思源黑体"
+                        FontSize="36"
+                        FontWeight="Regular" />
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        HorizontalAlignment="Center"
+                        Content="{Binding TextInfo}"
+                        FontFamily="思源黑体"
+                        FontSize="36"
+                        FontWeight="ExtraBold" />
+
+                    <Button
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Width="230"
+                        Height="40"
+                        HorizontalAlignment="Center"
+                        Background="{StaticResource PrimaryHueLightBrush}"
+                        BorderThickness="0"
+                        Command="{s:Action Confirm}"
+                        Cursor="Hand"
+                        IsDefault="True">
+                        <ContentControl>
+                            <TextBlock
+                                Margin="7,5,0,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                FontFamily="思源黑体"
+                                FontSize="18"
+                                FontWeight="Black"
+                                Text="确认缴费（支持空格键）" />
+                        </ContentControl>
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border
+                                    Background="{StaticResource PrimaryHueLightBrush}"
+                                    BorderBrush="{TemplateBinding Control.BorderBrush}"
+                                    BorderThickness="1"
+                                    CornerRadius="12">
+
+                                    <ContentPresenter
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Content="{TemplateBinding ContentControl.Content}" />
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <TextBlock x:Name="txxx" />
+                    <Button
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Width="230"
+                        Height="40"
+                        HorizontalAlignment="Center"
+                        Background="{StaticResource PrimaryHueLightBrush}"
+                        BorderThickness="0"
+                        Command="{s:Action Cancel}"
+                        Cursor="Hand"
+                        IsDefault="True"
+                        IsEnabled="{Binding EnableFree}">
+                        <ContentControl>
+                            <Grid>
+                                <TextBlock
+                                    Margin="7,5,0,0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    FontFamily="思源黑体"
+                                    FontSize="18"
+                                    FontWeight="Black"
+                                    Foreground="{Binding StateForeground}"
+                                    Text="免费放行" />
+                            </Grid>
+                        </ContentControl>
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border
+                                    Background="{StaticResource PrimaryHueLightBrush}"
+                                    BorderBrush="{TemplateBinding Control.BorderBrush}"
+                                    BorderThickness="1"
+                                    CornerRadius="12">
+
+                                    <ContentPresenter
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Content="{TemplateBinding ContentControl.Content}" />
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                </Grid>
+            </Border>
+        </Grid>
+    </DockPanel>
+
+</Controls:MetroWindow>

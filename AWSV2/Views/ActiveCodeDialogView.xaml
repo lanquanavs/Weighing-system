@@ -1,0 +1,173 @@
+﻿<mde:MaterialWindow
+    x:Class="AWSV2.Views.ActiveCodeDialogView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ajCommonConverters="clr-namespace:Common.Converters;assembly=Common"
+    xmlns:ajCtrls="clr-namespace:Common.AJControls;assembly=Common"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:AWSV2.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mde="clr-namespace:MaterialDesignExtensions.Controls;assembly=MaterialDesignExtensions"
+    xmlns:s="https://github.com/canton7/Stylet"
+    xmlns:system="clr-namespace:System;assembly=mscorlib"
+    Width="480"
+    Height="360"
+    d:Background="Transparent"
+    AllowsTransparency="True"
+    Background="{x:Null}"
+    BorderBackgroundBrush="Transparent"
+    FadeContentIfInactive="False"
+    ResizeMode="NoResize"
+    TextElement.FontFamily="Microsoft YaHei"
+    TextElement.FontSize="16"
+    TextElement.FontWeight="Medium"
+    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+    WindowStartupLocation="CenterScreen"
+    WindowStyle="None"
+    mc:Ignorable="d">
+    <Window.Resources>
+        <ajCommonConverters:BooleanMapConverter
+            x:Key="activeCodeTextboxHineConverter"
+            FalseValue="此密钥无效请重新输入"
+            NullValue="请输入您的密钥"
+            TrueValue="密钥验证正确" />
+        <ajCommonConverters:BooleanMapConverter
+            x:Key="activeCodeTextboxColorConverter"
+            FalseValue="{StaticResource AJRed}"
+            NullValue="{StaticResource AJGray}"
+            TrueValue="{StaticResource AJGreen}" />
+    </Window.Resources>
+    <Border
+        Name="user"
+        Margin="12"
+        Padding="12,0"
+        Background="{DynamicResource MaterialDesignPaper}"
+        CornerRadius="0">
+        <Border.Effect>
+            <DropShadowEffect
+                BlurRadius="18"
+                Direction="120"
+                Opacity="0.42"
+                ShadowDepth="0"
+                Color="{StaticResource ThemeColor}" />
+        </Border.Effect>
+        <Grid>
+
+            <DockPanel>
+
+                <DockPanel Margin="0,8" DockPanel.Dock="Top">
+                    <Button
+                        Background="{StaticResource AJRedLight}"
+                        DockPanel.Dock="Left"
+                        Style="{StaticResource MaterialDesignIconButton}">
+                        <md:PackIcon Foreground="{StaticResource AJRed}" Kind="Lock" />
+                    </Button>
+                    <Button
+                        Width="42"
+                        Height="42"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top"
+                        Background="Transparent"
+                        Command="{s:Action CancelActive}"
+                        DockPanel.Dock="Right"
+                        Foreground="{StaticResource AJGray}"
+                        Style="{StaticResource MaterialDesignIconButton}">
+                        <md:PackIcon Kind="Close" />
+                    </Button>
+                </DockPanel>
+
+                <Grid Margin="0,0,0,8" DockPanel.Dock="Top">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel VerticalAlignment="Bottom">
+                        <Label Content="请输入产品密钥" FontWeight="Bold" />
+                        <Label Content="产品密钥从经销商获得，当产品机器码" FontSize="12" />
+                    </StackPanel>
+                    <Image
+                        Grid.Column="1"
+                        Width="70"
+                        Height="70"
+                        VerticalAlignment="Bottom"
+                        Source="{Binding QRCode}" />
+                </Grid>
+
+                <DockPanel DockPanel.Dock="Top">
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        DockPanel.Dock="Left"
+                        Text="{Binding HardDiskNo, FallbackValue=123}" />
+                    <Button
+                        Margin="8,0"
+                        HorizontalAlignment="Right"
+                        Command="{s:Action CopyHardDiskNo}"
+                        Content="复制"
+                        DockPanel.Dock="Right"
+                        Foreground="{StaticResource MaterialDesignBody}"
+                        Style="{StaticResource Button NoneStyle}" />
+                </DockPanel>
+
+                <Border
+                    Margin="0,8"
+                    BorderBrush="{Binding ActiveCodeCorrect, Converter={StaticResource activeCodeTextboxColorConverter}, FallbackValue={StaticResource AJGray}}"
+                    BorderThickness="1"
+                    CornerRadius="0"
+                    DockPanel.Dock="Top">
+                    <TextBox
+                        MinHeight="32"
+                        MaxHeight="64"
+                        md:HintAssist.Hint="{Binding ActiveCodeCorrect, Converter={StaticResource activeCodeTextboxHineConverter}, FallbackValue=请输入}"
+                        md:HintAssist.IsFloating="False"
+                        AcceptsReturn="True"
+                        BorderThickness="0"
+                        Text="{Binding ActiveCode, UpdateSourceTrigger=PropertyChanged}"
+                        TextWrapping="Wrap"
+                        VerticalScrollBarVisibility="Visible" />
+                </Border>
+
+                <StackPanel
+                    HorizontalAlignment="Right"
+                    DockPanel.Dock="Bottom"
+                    Orientation="Horizontal">
+
+                    <Button
+                        Margin="0,0,12,0"
+                        Background="Transparent"
+                        BorderBrush="{StaticResource MaterialDesignBody}"
+                        Command="{s:Action CancelActive}"
+                        Foreground="{StaticResource MaterialDesignBody}"
+                        IsEnabled="{Binding ActiveLoading, Converter={StaticResource boolReverseConverter}}">
+                        取消
+                    </Button>
+
+                    <Button
+                        Grid.Column="1"
+                        md:ButtonProgressAssist.IsIndeterminate="{Binding ActiveLoading}"
+                        md:ButtonProgressAssist.IsIndicatorVisible="True"
+                        md:ButtonProgressAssist.Value="-1"
+                        Command="{s:Action ConfirmActive}"
+                        Content="下一步"
+                        IsDefault="True" />
+                </StackPanel>
+
+            </DockPanel>
+
+            <ajCtrls:AJToast
+                Margin="0,12,0,0"
+                Message="复制成功!"
+                Type="Success"
+                Visible="{Binding HardDiskNoCopySuccess, Mode=TwoWay}" />
+
+            <!--<md:Snackbar
+    Margin="0,12,0,0"
+    VerticalAlignment="Top"
+    Background="{StaticResource AJGreenLight}"
+    IsActive="{Binding HardDiskNoCopySuccess, Mode=TwoWay}">
+    <md:SnackbarMessage Content="复制成功!" Foreground="{StaticResource AJGreen}" />
+</md:Snackbar>-->
+        </Grid>
+
+    </Border>
+</mde:MaterialWindow>

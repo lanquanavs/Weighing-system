@@ -20,7 +20,7 @@ using System.Reflection;
 		  Important notice: The configuration for version 2.6.0 changed. See the release notes of this version for details.
 	  ")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("4.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("4.0.0+d240961da58f85e0ce1e0ec56890470d4cb5b32f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("4.0.0+3a41d8cdd11e221c165a650d3b99e4b0eb1e8341")]
 [assembly: System.Reflection.AssemblyProductAttribute("Material Design Extensions")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Material Design Extensions")]
 [assembly: System.Reflection.AssemblyVersionAttribute("4.0.0.0")]

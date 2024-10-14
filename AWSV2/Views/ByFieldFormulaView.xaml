@@ -1,0 +1,130 @@
+﻿<mde:MaterialWindow
+    x:Class="AWSV2.Views.ByFieldFormulaView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mde="clr-namespace:MaterialDesignExtensions.Controls;assembly=MaterialDesignExtensions"
+    xmlns:s="https://github.com/canton7/Stylet"
+    Title="备用字段公式设置"
+    Width="480"
+    Height="640"
+    Background="{StaticResource MaterialDesignPaper}"
+    BorderBackgroundBrush="{StaticResource MaterialDesignPaper}"
+    BorderForegroundBrush="{StaticResource MaterialDesignBody}"
+    ShowInTaskbar="False"
+    TextElement.FontFamily="Microsoft YaHei"
+    TextElement.FontSize="16"
+    TextElement.FontWeight="Medium"
+    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+    WindowStyle="ToolWindow">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel>
+            <TextBlock Margin="4,12">
+                公式可用字段：
+            </TextBlock>
+            <TextBlock Margin="30,5,5,5">
+                毛重：_mz 皮重：_pz 净重：_jz<LineBreak />
+                扣重：_kz 扣率：_kl 实重：_sz<LineBreak />
+                备用字段：_by1 , _by2  ……  _by5</TextBlock>
+            <TextBlock Margin="4,12">
+                常用函数：
+            </TextBlock>
+            <TextBlock Margin="30,5,5,5">
+                向上取整：Ceiling(5.2) = 6<LineBreak />
+                向下取整：Floor(5.8) = 5<LineBreak />
+                四舍五入：Round(3.1415926, 2) = 3.14</TextBlock>
+            <TextBlock Margin="4,12" HorizontalAlignment="Center">
+                <Hyperlink Command="{s:Action ShowHelpChm}">更多函数及示例详见帮助文档</Hyperlink>
+            </TextBlock>
+            <StackPanel Margin="4,12">
+                <TextBox
+                    md:HintAssist.Background="{StaticResource MaterialDesignPaper}"
+                    md:HintAssist.Hint="备用字段1公式"
+                    Text="{Binding By1Formula}" />
+            </StackPanel>
+            <DockPanel Margin="4,12">
+
+                <TextBox md:HintAssist.Hint="备用字段2公式" Text="{Binding By2Formula}" />
+            </DockPanel>
+            <DockPanel Margin="4,12">
+
+                <TextBox md:HintAssist.Hint="备用字段3公式" Text="{Binding By3Formula}" />
+            </DockPanel>
+            <DockPanel Margin="4,12">
+
+                <TextBox md:HintAssist.Hint="备用字段4公式" Text="{Binding By4Formula}" />
+            </DockPanel>
+            <DockPanel Margin="4,12">
+
+                <TextBox md:HintAssist.Hint="备用字段5公式" Text="{Binding By5Formula}" />
+            </DockPanel>
+            <DockPanel Margin="4,12">
+
+                <TextBox md:HintAssist.Hint="备用字段6公式" Text="{Binding By6Formula}" />
+            </DockPanel>
+            <DockPanel Margin="4,12">
+
+                <TextBox md:HintAssist.Hint="备用字段7公式" Text="{Binding By7Formula}" />
+            </DockPanel>
+            <DockPanel Margin="4,12">
+
+                <TextBox md:HintAssist.Hint="备用字段81公式" Text="{Binding By8Formula}" />
+            </DockPanel>
+            <DockPanel Margin="4,12">
+
+                <TextBox md:HintAssist.Hint="备用字段9公式" Text="{Binding By9Formula}" />
+            </DockPanel>
+            <DockPanel Margin="4,12">
+
+                <TextBox md:HintAssist.Hint="备用字段10公式" Text="{Binding By10Formula}" />
+            </DockPanel>
+            <DockPanel Margin="4,12">
+
+                <TextBox md:HintAssist.Hint="备用字段11公式" Text="{Binding By11Formula}" />
+            </DockPanel>
+            <DockPanel Margin="4,12">
+
+                <TextBox md:HintAssist.Hint="备用字段12公式" Text="{Binding By12Formula}" />
+            </DockPanel>
+            <DockPanel Margin="4,12">
+
+                <TextBox md:HintAssist.Hint="备用字段13公式" Text="{Binding By13Formula}" />
+            </DockPanel>
+            <DockPanel Margin="4,12">
+
+                <TextBox md:HintAssist.Hint="备用字段14公式" Text="{Binding By14Formula}" />
+            </DockPanel>
+            <DockPanel Margin="4,12">
+
+                <TextBox md:HintAssist.Hint="备用字段15公式" Text="{Binding By15Formula}" />
+            </DockPanel>
+            <DockPanel Margin="4,12">
+
+                <TextBox md:HintAssist.Hint="备用字段16公式" Text="{Binding By16Formula}" />
+            </DockPanel>
+            <DockPanel Margin="4,12">
+
+                <TextBox md:HintAssist.Hint="备用字段17公式" Text="{Binding By17Formula}" />
+            </DockPanel>
+            <DockPanel Margin="4,12">
+
+                <TextBox md:HintAssist.Hint="备用字段18公式" Text="{Binding By18Formula}" />
+            </DockPanel>
+            <DockPanel Margin="4,12">
+
+                <TextBox md:HintAssist.Hint="备用字段19公式" Text="{Binding By19Formula}" />
+            </DockPanel>
+            <DockPanel Margin="4,12">
+
+                <TextBox md:HintAssist.Hint="备用字段20公式" Text="{Binding By20Formula}" />
+            </DockPanel>
+            <Button
+                Margin="4,12"
+                Command="{s:Action SaveFormula}"
+                Content="保存" />
+            <TextBlock Margin="4,12" Text="{Binding StatusBar, FallbackValue=状态栏}" />
+        </StackPanel>
+    </ScrollViewer>
+
+</mde:MaterialWindow>

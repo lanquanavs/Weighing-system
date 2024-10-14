@@ -1,0 +1,112 @@
+﻿<mde:MaterialWindow
+    x:Class="AWSV2.Views.WeighingRecordView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+    xmlns:local="clr-namespace:AWSV2.Views"
+    xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mde="clr-namespace:MaterialDesignExtensions.Controls;assembly=MaterialDesignExtensions"
+    xmlns:s="https://github.com/canton7/Stylet"
+    xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
+    xmlns:vm="clr-namespace:AWSV2.ViewModels"
+    Title="{Binding Title, FallbackValue=新增/修改称重记录}"
+    Width="480"
+    MinHeight="640"
+    Background="{StaticResource MaterialDesignPaper}"
+    BorderBackgroundBrush="{StaticResource MaterialDesignPaper}"
+    BorderForegroundBrush="{StaticResource MaterialDesignBody}"
+    SizeToContent="Height"
+    TextElement.FontFamily="Microsoft YaHei"
+    TextElement.FontSize="16"
+    TextElement.FontWeight="Medium"
+    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+    WindowStyle="ToolWindow">
+
+    <Window.Resources>
+        <DataTemplate x:Key="combox">
+            <ComboBox
+                Margin="8,12"
+                md:ComboBoxAssist.ShowSelectedItem="True"
+                md:HintAssist.Hint="{Binding Label}"
+                md:TextFieldAssist.DecorationVisibility="Collapsed"
+                BorderBrush="{StaticResource MaterialDesignBody}"
+                DisplayMemberPath="Label"
+                IsEditable="{Binding Editable}"
+                IsEnabled="{Binding Disabled, Converter={StaticResource boolReverseConverter}}"
+                ItemsSource="{Binding Options}"
+                SelectedValue="{Binding SelectedOption, UpdateSourceTrigger=PropertyChanged}"
+                Text="{Binding Value, UpdateSourceTrigger=PropertyChanged}" />
+        </DataTemplate>
+        <DataTemplate x:Key="date">
+            <Grid Margin="8,12">
+                <TextBox
+                    md:HintAssist.Hint="{Binding Label}"
+                    BorderBrush="{StaticResource MaterialDesignBody}"
+                    IsReadOnly="{Binding IsFilterDisplay, Converter={StaticResource boolReverseConverter}}"
+                    Text="{Binding Value, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:yyyy-MM-dd HH:mm:ss}}" />
+                <Button
+                    Margin="0,0,2,0"
+                    HorizontalAlignment="Right"
+                    Command="{s:Action GenerateNow}"
+                    CommandParameter="{Binding Field}"
+                    Foreground="{StaticResource MaterialDesignBody}"
+                    IsEnabled="{Binding IsFilterDisplay}"
+                    Style="{StaticResource MaterialDesignFlatButton}">
+                    <md:PackIcon
+                        Width="24"
+                        Height="24"
+                        Kind="ClockTimeFourOutline" />
+                </Button>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="input">
+            <TextBox
+                Margin="8,12"
+                md:HintAssist.Hint="{Binding Label}"
+                md:TextFieldAssist.SuffixText="{Binding SuffixText}"
+                BorderBrush="{StaticResource MaterialDesignBody}"
+                IsReadOnly="{Binding IsFilterDisplay, Converter={StaticResource boolReverseConverter}}"
+                Text="{Binding Value, UpdateSourceTrigger=PropertyChanged}" />
+        </DataTemplate>
+        <DataTemplate x:Key="inputNumber">
+            <TextBox
+                Margin="8,12"
+                md:HintAssist.Hint="{Binding Label}"
+                md:TextFieldAssist.SuffixText="{Binding SuffixText}"
+                BorderBrush="{StaticResource MaterialDesignBody}"
+                IsReadOnly="{Binding IsFilterDisplay, Converter={StaticResource boolReverseConverter}}"
+                Text="{Binding Value, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource decimalToStringConverter}}" />
+        </DataTemplate>
+        <vm:FormItemTemplateSelector
+            x:Key="templateSelector"
+            Combox="{StaticResource combox}"
+            Date="{StaticResource date}"
+            InputNumber="{StaticResource inputNumber}"
+            TextBox="{StaticResource input}" />
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="64" />
+        </Grid.RowDefinitions>
+        <ScrollViewer
+            x:Name="scrolls"
+            MaxHeight="600"
+            VerticalScrollBarVisibility="Auto">
+            <ItemsControl ItemTemplateSelector="{StaticResource templateSelector}" ItemsSource="{Binding DyanmicPoundFieldItems}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+        </ScrollViewer>
+        <Button
+            Grid.Row="1"
+            Margin="8"
+            Command="{s:Action SaveItem}"
+            Content="保存" />
+    </Grid>
+
+</mde:MaterialWindow>

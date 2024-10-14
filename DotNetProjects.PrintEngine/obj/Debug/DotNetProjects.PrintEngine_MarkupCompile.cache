@@ -4,17 +4,17 @@
 library
 C#
 .cs
-C:\Users\liuma\Source\Repos\-\DotNetProjects.PrintEngine\obj\Debug\
+C:\Users\liuma\source\repos\-\DotNetProjects.PrintEngine\obj\Debug\
 DotNetProjects.PrintEngine
 none
 false
 DEBUG;TRACE
 
-6-1962173039
+5630781596
 1-2038346444
-49294037185
+50-2079151990
 18-62749286
-Properties\DesignTimeResources.xaml;Views\PrintControlView.xaml;Controls\ProgressDialog\ProgressDialogView.xaml;Resources\Themes\Generic\Theme.xaml;Controls\WaitScreen\SmallWaitScreenView.xaml;Controls\WaitScreen\WaitScreenView.xaml;
+Views\PrintControlView.xaml;Controls\ProgressDialog\ProgressDialogView.xaml;Resources\Themes\Generic\Theme.xaml;Controls\WaitScreen\SmallWaitScreenView.xaml;Controls\WaitScreen\WaitScreenView.xaml;
 
 False
 

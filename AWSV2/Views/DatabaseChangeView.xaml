@@ -1,0 +1,233 @@
+﻿<mde:MaterialWindow
+    x:Class="AWSV2.Views.DatabaseChangeView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+    xmlns:converter="clr-namespace:AWSV2.Converter"
+    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+    xmlns:local="clr-namespace:AWSV2.ViewModels"
+    xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mde="clr-namespace:MaterialDesignExtensions.Controls;assembly=MaterialDesignExtensions"
+    xmlns:s="https://github.com/canton7/Stylet"
+    Width="480"
+    MinHeight="600"
+    AllowsTransparency="True"
+    Background="{x:Null}"
+    BorderBackgroundBrush="Transparent"
+    FadeContentIfInactive="False"
+    ResizeMode="NoResize"
+    SizeToContent="Height"
+    TextElement.FontFamily="Microsoft YaHei"
+    TextElement.FontSize="16"
+    TextElement.FontWeight="Medium"
+    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+    WindowStartupLocation="CenterScreen"
+    WindowStyle="None">
+    <Window.Resources>
+        <local:DbTypeToVisibleConverter x:Key="dbTypeVisibleConvert" />
+        <converter:DBSelectedToBoolConverter x:Key="dbtb" />
+    </Window.Resources>
+    <Border
+        Margin="12"
+        Background="{StaticResource MaterialDesignPaper}"
+        CornerRadius="0">
+        <Border.Effect>
+            <DropShadowEffect
+                BlurRadius="18"
+                Direction="120"
+                Opacity="0.42"
+                ShadowDepth="0"
+                Color="{StaticResource CommonWhiteColor}" />
+
+        </Border.Effect>
+        <StackPanel>
+            <Grid Margin="8">
+                <Button
+                    HorizontalAlignment="Left"
+                    Command="{s:Action Exit}"
+                    Foreground="#000"
+                    Style="{StaticResource MaterialDesignIconButton}">
+                    <md:PackIcon Kind="ChevronLeft" />
+                </Button>
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="24"
+                    FontWeight="Bold"
+                    Text="数据库调整" />
+
+            </Grid>
+            <Label
+                HorizontalAlignment="Center"
+                Content="修改数据库后需要重启软件"
+                FontSize="12"
+                FontWeight="Bold" />
+
+            <StackPanel Margin="48,24">
+                <Border
+                    Margin="0,0,0,24"
+                    Padding="8"
+                    Background="{StaticResource TextBox}"
+                    CornerRadius="0">
+                    <ComboBox
+                        md:HintAssist.Hint="数据库类型"
+                        md:HintAssist.IsFloating="False"
+                        md:TextFieldAssist.DecorationVisibility="Collapsed"
+                        BorderThickness="0"
+                        DisplayMemberPath="Key"
+                        ItemsSource="{Binding TypeOptions}"
+                        SelectedValue="{Binding DbCfg.Type}"
+                        SelectedValuePath="Value"
+                        Style="{StaticResource MaterialDesignComboBox}" />
+                </Border>
+
+
+                <Border
+                    Margin="0,0,0,24"
+                    Padding="8"
+                    Background="{StaticResource TextBox}"
+                    CornerRadius="0"
+                    Visibility="{Binding DbCfg.Type, Converter={StaticResource dbTypeVisibleConvert}, ConverterParameter=sqlite}">
+                    <DockPanel>
+                        <md:PackIcon
+                            Width="22"
+                            Height="22"
+                            Margin="12,0"
+                            VerticalAlignment="Center"
+                            Kind="Harddisk" />
+                        <Border BorderBrush="{StaticResource MaterialDesignPaper}" BorderThickness="1,0,0,0" />
+                        <Button
+                            Margin="0,0,1,0"
+                            md:ButtonAssist.CornerRadius="0,0,0,0"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            Command="{s:Action LoadDBPath}"
+                            DockPanel.Dock="Right">
+                            <md:PackIcon Kind="DotsHorizontal" />
+                        </Button>
+                        <TextBox
+                            Margin="12,0"
+                            VerticalAlignment="Center"
+                            md:HintAssist.Foreground="{StaticResource PrimaryHueMidBrush}"
+                            md:HintAssist.Hint="选择路径"
+                            md:HintAssist.IsFloating="False"
+                            md:TextFieldAssist.DecorationVisibility="Collapsed"
+                            BorderThickness="0"
+                            DockPanel.Dock="Right"
+                            IsReadOnly="True"
+                            Style="{StaticResource MaterialDesignTextBox}"
+                            Text="{Binding DbCfg.DbFile, UpdateSourceTrigger=PropertyChanged}" />
+
+                    </DockPanel>
+
+                </Border>
+
+
+                <Border
+                    Margin="0,0,0,24"
+                    Padding="8"
+                    Background="{StaticResource TextBox}"
+                    CornerRadius="0"
+                    Visibility="{Binding DbCfg.Type, Converter={StaticResource dbTypeVisibleConvert}, ConverterParameter=mysql|mssql}">
+                    <DockPanel>
+                        <md:PackIcon
+                            Width="22"
+                            Height="22"
+                            Margin="12,0"
+                            VerticalAlignment="Center"
+                            Kind="DatabaseCogOutline" />
+                        <Border BorderBrush="{StaticResource MaterialDesignPaper}" BorderThickness="1,0,0,0" />
+                        <TextBox
+                            Margin="12,0"
+                            VerticalAlignment="Center"
+                            md:HintAssist.Foreground="{StaticResource PrimaryHueMidBrush}"
+                            md:HintAssist.Hint="IP地址"
+                            md:HintAssist.IsFloating="False"
+                            md:TextFieldAssist.DecorationVisibility="Collapsed"
+                            BorderThickness="0"
+                            Style="{StaticResource MaterialDesignTextBox}"
+                            Text="{Binding DbCfg.Server, UpdateSourceTrigger=PropertyChanged}" />
+                    </DockPanel>
+
+                </Border>
+
+                <Border
+                    Margin="0,0,0,24"
+                    Padding="8"
+                    Background="{StaticResource TextBox}"
+                    CornerRadius="0"
+                    Visibility="{Binding DbCfg.Type, Converter={StaticResource dbTypeVisibleConvert}, ConverterParameter=mysql|mssql}">
+                    <DockPanel>
+                        <TextBox
+                            Margin="12,0"
+                            VerticalAlignment="Center"
+                            md:HintAssist.Foreground="{StaticResource PrimaryHueMidBrush}"
+                            md:HintAssist.Hint="数据库用户名"
+                            md:HintAssist.IsFloating="False"
+                            md:TextFieldAssist.DecorationVisibility="Collapsed"
+                            BorderThickness="0"
+                            Style="{StaticResource MaterialDesignTextBox}"
+                            Text="{Binding DbCfg.UserId, UpdateSourceTrigger=PropertyChanged}" />
+                    </DockPanel>
+
+                </Border>
+
+                <Border
+                    Margin="0,0,0,24"
+                    Padding="8"
+                    Background="{StaticResource TextBox}"
+                    CornerRadius="0"
+                    Visibility="{Binding DbCfg.Type, Converter={StaticResource dbTypeVisibleConvert}, ConverterParameter=mysql|mssql}">
+                    <DockPanel>
+                        <PasswordBox
+                            Margin="12,0"
+                            VerticalAlignment="Center"
+                            md:HintAssist.Foreground="{StaticResource PrimaryHueMidBrush}"
+                            md:HintAssist.Hint="数据库密码"
+                            md:HintAssist.IsFloating="False"
+                            md:PasswordBoxAssist.Password="{Binding DbCfg.Password, UpdateSourceTrigger=PropertyChanged}"
+                            md:TextFieldAssist.DecorationVisibility="Collapsed"
+                            BorderThickness="0"
+                            Style="{StaticResource MaterialDesignRevealPasswordBox}" />
+                    </DockPanel>
+
+                </Border>
+
+                <Button
+                    HorizontalAlignment="Right"
+                    Command="{s:Action TestConnect}"
+                    Content="直接点击保存"
+                    Foreground="{StaticResource MaterialDesignBody}"
+                    IsEnabled="{Binding Loading, Converter={StaticResource boolReverseConverter}}"
+                    Style="{StaticResource MaterialDesignFlatLightButton}" />
+                <TextBlock
+                    Margin="8"
+                    Foreground="{StaticResource AJRed}"
+                    Text="{Binding ErrorInfo}"
+                    TextAlignment="Center"
+                    TextWrapping="Wrap" />
+                <Button
+                    Margin="0,12,0,0"
+                    md:ButtonProgressAssist.IsIndeterminate="{Binding Loading}"
+                    md:ButtonProgressAssist.IsIndicatorVisible="True"
+                    md:ButtonProgressAssist.Value="-1"
+                    Background="{StaticResource PrimaryHueDarkBrush}"
+                    Command="{s:Action Save}"
+                    Content="保存"
+                    Cursor="Hand"
+                    IsDefault="True" />
+
+            </StackPanel>
+
+            <StackPanel
+                Margin="24,8"
+                HorizontalAlignment="Right"
+                Orientation="Horizontal">
+                <TextBlock Text="{Binding ActiveInfo}" />
+                <TextBlock Text="版本号：" />
+                <TextBlock Text="{Binding VersionName}" />
+            </StackPanel>
+        </StackPanel>
+    </Border>
+
+</mde:MaterialWindow>

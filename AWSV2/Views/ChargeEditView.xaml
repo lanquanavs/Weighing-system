@@ -1,0 +1,132 @@
+﻿<Controls:MetroWindow
+    x:Class="AWSV2.Views.ChargeEditView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+    xmlns:s="https://github.com/canton7/Stylet"
+    Title="电子支付配置"
+    Width="480.276"
+    Height="283.06"
+    BorderBrush="#7e7e7f"
+    NonActiveWindowTitleBrush="{StaticResource PrimaryHueLightBrush}"
+    ResizeMode="NoResize"
+    ShowCloseButton="False"
+    ShowInTaskbar="False"
+    SizeToContent="WidthAndHeight"
+    TitleForeground="Black"
+    WindowTitleBrush="{StaticResource PrimaryHueLightBrush}">
+
+    <Controls:MetroWindow.IconTemplate>
+        <DataTemplate>
+            <iconPacks:PackIconFontAwesome
+                Width="{TemplateBinding Width}"
+                Height="{TemplateBinding Height}"
+                Margin="2"
+                Padding="4"
+                Foreground="Black"
+                Kind="ExclamationTriangleSolid" />
+        </DataTemplate>
+    </Controls:MetroWindow.IconTemplate>
+
+    <StackPanel Margin="5,5,5,5">
+        <Grid Width="425">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="7*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <StackPanel
+                Grid.Row="0"
+                Grid.Column="0"
+                Margin="0,10"
+                Orientation="Horizontal">
+                <TextBlock
+                    Width="50"
+                    Margin="55,5"
+                    Text="商户号：" />
+                <TextBox
+                    Width="210"
+                    Text="{Binding ParkingID}"
+                    TextAlignment="Center" />
+            </StackPanel>
+            <StackPanel
+                Grid.Row="1"
+                Grid.Column="0"
+                Margin="0,10"
+                Orientation="Horizontal">
+                <TextBlock
+                    Width="50"
+                    Margin="55,5"
+                    Text="服务器：" />
+                <TextBox
+                    Width="210"
+                    Text="{Binding PServerPath}"
+                    TextAlignment="Center" />
+            </StackPanel>
+            <StackPanel
+                Grid.Row="2"
+                Grid.Column="0"
+                Margin="0,10"
+                Orientation="Horizontal">
+                <TextBlock
+                    Width="50"
+                    Margin="55,5"
+                    Text="UUID：" />
+                <TextBox
+                    Width="210"
+                    Text="{Binding UUID}"
+                    TextAlignment="Center" />
+            </StackPanel>
+
+            <StackPanel
+                Grid.Row="3"
+                Grid.Column="0"
+                Margin="0,10"
+                Orientation="Horizontal">
+                <TextBlock
+                    Width="50"
+                    Margin="55,5"
+                    Text="MAC：" />
+                <TextBox
+                    Width="210"
+                    Text="{Binding MAC}"
+                    TextAlignment="Center" />
+            </StackPanel>
+
+        </Grid>
+
+        <StackPanel
+            Margin="0,10"
+            HorizontalAlignment="Center"
+            Orientation="Horizontal">
+            <Button
+                Width="150"
+                Height="35"
+                Margin="20"
+                Command="{s:Action Confirm}"
+                Content="确定"
+                FontFamily="SimSun"
+                FontSize="12"
+                FontWeight="Bold"
+                Style="{StaticResource MetroButton}" />
+            <Button
+                Width="150"
+                Height="35"
+                Margin="20"
+                Command="{s:Action CloseWindow}"
+                Content="关闭"
+                FontFamily="SimSun"
+                FontSize="12"
+                FontWeight="Bold"
+                Style="{StaticResource MetroButton}" />
+        </StackPanel>
+
+
+    </StackPanel>
+
+</Controls:MetroWindow>
